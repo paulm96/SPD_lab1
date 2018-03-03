@@ -20,10 +20,9 @@ int Cmax(int **array, int tasks, int mach) {
     return machines[2];
 }
 
-
 int main() {
     std::ifstream in;
-    in.open("./NEH1.DAT", std::ios::in);
+    in.open("./NEH2.DAT", std::ios::in);
     if (in.good())
         std::cout << "Opened succesfully\n";
 
