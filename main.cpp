@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-int Cmax(int **array, int tasks, int mach) {
+int Cmax(int **array,const int &tasks, const int &mach) {
     std::vector<int> machines = {0, 0, 0};
 
     for (int j = 0; j < tasks; j++) {
@@ -28,7 +28,6 @@ void perm(int &min, int **result_array, int **array, const int &tasks, const int
             //std::cout << tasks << " " << machines;
             //std::copy(&array[0][0], &array[0][0] + tasks * machines, &result_array[0][0]);
         }
-
     } else {
         for (int i = 0; i < k; ++i) {
             std::swap(array[i], array[k]);
@@ -41,7 +40,7 @@ void perm(int &min, int **result_array, int **array, const int &tasks, const int
 
 int main() {
     std::ifstream in;
-    in.open("./NEH3.DAT", std::ios::in);
+    in.open("./NEH2.DAT", std::ios::in);
     if (in.good())
         std::cout << "Opened succesfully\n";
 
@@ -84,6 +83,12 @@ int main() {
 //        std::cout << std::endl;
 //    }
 
+    for (auto i = 0; i < tasks; ++i) {
+        delete [] array[i];
+        delete result_array[i];
+    }
+    delete []array;
+    delete []result_array;
 
     return 0;
 }
