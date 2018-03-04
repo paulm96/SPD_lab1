@@ -1,3 +1,3 @@
-/home/smola/Polibuda/6sem/SPD/SPD_lab1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/smola/Polibuda/6sem/SPD/SPD_lab1/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/smola/Polibuda/6sem/SPD/SPD_lab1/cmake-build-debug/CMakeFiles/SPD_lab1.dir
+/home/pawel/CLionProjects/SPD_lab1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pawel/CLionProjects/SPD_lab1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/pawel/CLionProjects/SPD_lab1/cmake-build-debug/CMakeFiles/SPD_lab1.dir

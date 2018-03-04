@@ -4,18 +4,11 @@
 #include <vector>
 #include <algorithm>
 
-<<<<<<< HEAD
-int Cmax(int **array,const int &tasks, const int &mach) {
-    std::vector<int> machines = {0, 0, 0};
-=======
 int Cmax(int **array, int tasks, int mach) {
     std::vector<int> machines;
-    for(int i =0 ; i<mach;i++)
-    {
-        machines.push_back( 0 );
+    for (int i = 0; i < mach; i++) {
+        machines.push_back(0);
     }
->>>>>>> e74eeca8bcf04c47aab27382c4d676f9a355cd87
-
     for (int j = 0; j < tasks; j++) {
         machines[0] += array[j][0];
         for (int i = 0; i < mach - 1; i++) {
@@ -26,7 +19,7 @@ int Cmax(int **array, int tasks, int mach) {
             }
         }
     }
-    return machines[mach-1];
+    return machines[mach - 1];
 }
 
 
@@ -86,7 +79,7 @@ int main() {
     int result = std::numeric_limits<int>::max();   //max_int
     perm(result, result_array, array, tasks, machines, tasks - 1);  //all permutations
 
-    std::cout << "Result: " <<  result << std::endl;
+    std::cout << "Result: " << result << std::endl;
 /*   for (int i = 0; i < tasks; ++i) {
        for (int j = 0; j < machines; ++j) {
            std::cout << result_array[i][j] << " ";
@@ -95,11 +88,11 @@ int main() {
     }*/
 
     for (auto i = 0; i < tasks; ++i) {
-        delete [] array[i];
+        delete[] array[i];
         delete result_array[i];
     }
-    delete []array;
-    delete []result_array;
+    delete[]array;
+    delete[]result_array;
 
     return 0;
 }
