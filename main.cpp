@@ -4,8 +4,17 @@
 #include <vector>
 #include <algorithm>
 
+<<<<<<< HEAD
 int Cmax(int **array,const int &tasks, const int &mach) {
     std::vector<int> machines = {0, 0, 0};
+=======
+int Cmax(int **array, int tasks, int mach) {
+    std::vector<int> machines;
+    for(int i =0 ; i<mach;i++)
+    {
+        machines.push_back( 0 );
+    }
+>>>>>>> e74eeca8bcf04c47aab27382c4d676f9a355cd87
 
     for (int j = 0; j < tasks; j++) {
         machines[0] += array[j][0];
@@ -17,15 +26,17 @@ int Cmax(int **array,const int &tasks, const int &mach) {
             }
         }
     }
-    return machines[2];
+    return machines[mach-1];
 }
 
+
 void perm(int &min, int **result_array, int **array, const int &tasks, const int &machines, int k) {
-    if (1 == k) {
+    if (k == 1) {
         int value = Cmax(array, tasks, machines);
         if (value < min) {
             min = value;
-            //std::cout << tasks << " " << machines;
+
+
             //std::copy(&array[0][0], &array[0][0] + tasks * machines, &result_array[0][0]);
         }
     } else {
@@ -76,12 +87,12 @@ int main() {
     perm(result, result_array, array, tasks, machines, tasks - 1);  //all permutations
 
     std::cout << "Result: " <<  result << std::endl;
-//    for (int i = 0; i < tasks; ++i) {
-//        for (int j = 0; j < machines; ++j) {
-//            std::cout << result_array[i][j] << " ";
-//        }
-//        std::cout << std::endl;
-//    }
+/*   for (int i = 0; i < tasks; ++i) {
+       for (int j = 0; j < machines; ++j) {
+           std::cout << result_array[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }*/
 
     for (auto i = 0; i < tasks; ++i) {
         delete [] array[i];
