@@ -6,9 +6,8 @@
 
 int Cmax(int **array, int tasks, int mach) {
     std::vector<int> machines;
-    for(int i =0 ; i<mach;i++)
-    {
-        machines.push_back( 0 );
+    for (int i = 0; i < mach; i++) {
+        machines.push_back(0);
     }
 
     for (int j = 0; j < tasks; j++) {
@@ -21,7 +20,7 @@ int Cmax(int **array, int tasks, int mach) {
             }
         }
     }
-    return machines[mach-1];
+    return machines[mach - 1];
 }
 
 
@@ -30,8 +29,6 @@ void perm(int &min, int **result_array, int **array, const int &tasks, const int
         int value = Cmax(array, tasks, machines);
         if (value < min) {
             min = value;
-
-
             //std::copy(&array[0][0], &array[0][0] + tasks * machines, &result_array[0][0]);
         }
 
@@ -82,7 +79,7 @@ int main() {
     int result = std::numeric_limits<int>::max();   //max_int
     perm(result, result_array, array, tasks, machines, tasks - 1);  //all permutations
 
-    std::cout << "Result: " <<  result << std::endl;
+    std::cout << "Result: " << result << std::endl;
 /*   for (int i = 0; i < tasks; ++i) {
        for (int j = 0; j < machines; ++j) {
            std::cout << result_array[i][j] << " ";
