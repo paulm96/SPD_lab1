@@ -44,7 +44,7 @@ void perm(int &min, int **result_array, int **array, const int &tasks, const int
 
 int main() {
     std::ifstream in;
-    in.open("./NEH2.DAT", std::ios::in);
+    in.open("./NEH3.DAT", std::ios::in);
     if (in.good())
         std::cout << "Opened succesfully\n";
 
