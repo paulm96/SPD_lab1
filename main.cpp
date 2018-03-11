@@ -33,37 +33,41 @@ int Cmax(std::vector<Task> taskVector) {
     return timeOnMachines[machines - 1];
 }
 
-//int perm(int **array, const int &tasks, const int &machines, std::vector<Task> tasksMeneger) {
-//    std::vector<int> times;
-//    std::vector<Task> tmpArray;
-//    tmpArray = tasksMeneger;
-//    int cMax = std::numeric_limits<int>::max();
-//    for (int i = 0; i < tasks; i++) {
-//        times.push_back(cMax);
-//    }
-//    int result = 2;
-//
-//    for (int j = 0; j < tasks - 1; j++) {
-//        for (int i = result - 1; i >= 0; i--) {
-//            times[i] = Cmax(array, tasksMeneger, result, machines);
-//
-//            if (i > 0) {
-//                std::swap(tasksMeneger[i], tasksMeneger[i - 1]);
-//
-//            }
-//            if (i < result - 1 && times[i] < times[i + 1])
-//                std::swap(tmpArray[i + 1], tmpArray[i]);
-//        }
-//        tasksMeneger = tmpArray;
-//        result++;
-//    }
-//
-//    for (int i = 0; i < tasks; i++) {
-//        if (times[i] < cMax)
-//            cMax = times[i];
-//    }
-//    return cMax;
-//}
+int permutation (std::vector<Task> taskVector) {
+
+
+    std::vector<int> times;
+   std::vector<Task> tmpArray;
+    int index;
+    int minTime = std::numeric_limits<int>::max();
+    for (int i = 0; i < taskVector.size();i++){
+        times.push_back(0);
+    }
+ tmpArray.push_back(taskVector[0]);
+    tmpArray.push_back(taskVector[1]);
+
+    for (int j = 0; j < taskVector.size() - 1; j++)
+    {
+        for (int i = tmpArray.size() - 1; i >= 0; i--)
+        {
+            times[i] = Cmax(tmpArray);
+            if (i > 0) std::swap(tmpArray[i], tmpArray[i - 1]);
+        }
+        for (int i = 0; i < tmpArray.size(); i++)
+        {
+            if (times[i] < minTime){
+                minTime = times[i];
+                index=i;
+            }
+        }
+        minTime=std::numeric_limits<int>::max();
+        for(int i =0;i<index;i++) std::swap(tmpArray[i], tmpArray[i + 1]);
+
+        if(j<taskVector.size()-2) tmpArray.push_back(taskVector[tmpArray.size()]);
+    }
+
+   return times[index];
+}
 
 std::vector<Task> loadFromFile(const std::string &file){
     std::ifstream in;
@@ -99,12 +103,13 @@ std::vector<Task> loadFromFile(const std::string &file){
 
 int main() {
 
-    auto taskVector = loadFromFile("./NEH1.DAT");
+    auto taskVector = loadFromFile("./NEH4.DAT");
 
     std::sort(taskVector.begin(), taskVector.end(), [](Task a, Task b) -> bool {
         return a.fullTime > b.fullTime;
     });
 
-    std::cout << Cmax(taskVector);
+    //std::cout << Cmax(taskVector);
+    std::cout << "Cmax= " << permutation(taskVector)<< std::endl;
     return 0;
 }
